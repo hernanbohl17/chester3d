@@ -65,6 +65,7 @@
   @media(max-width:820px){
     .cat-list{flex-direction:row;overflow-x:auto;padding-bottom:4px}
     .cat-list button{width:auto;white-space:nowrap}
+    .cat-list button .k{display:none}
     .cat-box h5{display:none}
   }
 
@@ -106,16 +107,36 @@
   .kit .chips span{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.04em;color:var(--ink-soft);border:1px solid var(--edge);background:var(--paper-3);padding:6px 11px;border-radius:999px}
   .kit p{font-size:14px;color:var(--ink-soft);max-width:42ch}
 
-  /* CAMPO COPIABLE */
-  .copy-field{display:flex;align-items:center;gap:10px;width:100%;text-align:left;cursor:pointer;background:var(--paper-2);border:1px dashed var(--edge);border-radius:8px;padding:9px 11px;margin-top:8px;font-family:"IBM Plex Mono",monospace;color:var(--ink);transition:.14s}
+  /* CAMPO COPIABLE con ojo mostrar/ocultar */
+  .copy-field{display:flex;align-items:center;gap:8px;width:100%;background:var(--paper-2);border:1px dashed var(--edge);border-radius:8px;padding:9px 11px;margin-top:8px;font-family:"IBM Plex Mono",monospace;color:var(--ink);transition:.14s}
   .copy-field:hover{border-color:var(--ink-faint);background:#fff}
-  .copy-field:focus-visible{outline:2px solid var(--brick);outline-offset:2px}
   .copy-field .cf-l{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);flex:none;min-width:38px}
-  .copy-field .cf-v{font-size:12.5px;word-break:break-all;flex:1}
-  .copy-field .cf-hint{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--brick);flex:none;white-space:nowrap}
+  .copy-field .cf-v{font-size:12.5px;word-break:break-all;flex:1;letter-spacing:.02em;user-select:all}
+  .copy-field .cf-v.hidden{letter-spacing:.15em;color:var(--ink-faint)}
+  .copy-field .cf-btn{background:none;border:none;padding:4px 6px;cursor:pointer;border-radius:5px;display:inline-flex;align-items:center;justify-content:center;color:var(--ink-faint);transition:.14s}
+  .copy-field .cf-btn:hover{background:var(--paper-3);color:var(--ink)}
+  .copy-field .cf-btn:focus-visible{outline:2px solid var(--brick);outline-offset:1px}
+  .copy-field .cf-btn svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .copy-field .cf-copy{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--brick);font-weight:600}
   .copy-field.copied{border-color:var(--pine);border-style:solid}
-  .copy-field.copied .cf-hint{color:var(--pine)}
+  .copy-field.copied .cf-copy{color:var(--pine)}
   .titu{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-faint);margin-top:10px;line-height:1.5}
+  .loc-line{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink);margin-top:10px;background:var(--paper-2);border:1px dashed var(--edge);padding:8px 10px;border-radius:7px}
+
+  /* TAMBIÉN TE PUEDE INTERESAR */
+  .related{margin-top:34px;padding-top:22px;border-top:1px solid var(--edge)}
+  .related h3{font-family:"Fraunces",serif;font-weight:600;font-size:17px;text-transform:uppercase;letter-spacing:.02em;margin-bottom:14px}
+  .rel-scroll{display:grid;grid-auto-flow:column;grid-auto-columns:160px;gap:12px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory}
+  .rel-scroll::-webkit-scrollbar{height:6px}
+  .rel-scroll::-webkit-scrollbar-thumb{background:var(--edge);border-radius:3px}
+  .rel-card{background:var(--paper-2);border:1px solid var(--edge);border-radius:10px;overflow:hidden;cursor:pointer;scroll-snap-align:start;display:flex;flex-direction:column;transition:.15s;text-decoration:none;color:var(--ink)}
+  .rel-card:hover{border-color:var(--ink-faint);transform:translateY(-2px)}
+  .rel-card .rt{aspect-ratio:1/1;background:var(--paper-3);border-bottom:1px solid var(--edge);display:flex;align-items:center;justify-content:center}
+  .rel-card .rt img{width:100%;height:100%;object-fit:cover}
+  .rel-card .rt svg{width:52%;height:52%}
+  .rel-card .rb{padding:9px 10px 10px}
+  .rel-card .rn{font-family:"Fraunces",serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.01em;line-height:1.2;margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .rel-card .rp{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600}
 
   /* FOOTER */
   footer{margin-top:48px;border-top:1px solid var(--edge);background:var(--paper-2)}
@@ -180,7 +201,7 @@
   <div class="nav-in">
     <a class="brand" href="#top"><span class="mark">CH3D</span><span class="full">Chester3D</span></a>
     <div class="nav-links">
-      <a href="#catalogo">Catálogo</a><a href="#pago">Pago</a>
+      <a href="#catalogo">Catálogo</a>
     </div>
     <a class="nav-wa" id="nav-wa" href="#" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2m0 1.8a8.2 8.2 0 0 1 5.8 14 8.2 8.2 0 0 1-9.9 1.3l-.35-.2-2.9.77.77-2.83-.23-.36A8.2 8.2 0 0 1 12 3.8m-2.4 3.7c-.18 0-.47.07-.72.34s-.95.93-.95 2.27.98 2.63 1.11 2.81 1.9 3 4.7 4.08c2.34.9 2.82.72 3.33.68s1.63-.66 1.86-1.3.23-1.2.16-1.31-.25-.18-.52-.31-1.63-.8-1.88-.9-.44-.13-.62.14-.71.9-.87 1.08-.32.2-.6.07a6.7 6.7 0 0 1-2-1.23 7.4 7.4 0 0 1-1.37-1.7c-.14-.25 0-.38.11-.5s.25-.3.38-.44.17-.25.25-.42.04-.32-.02-.45-.61-1.48-.84-2.02-.44-.46-.6-.47Z"/></svg>
@@ -260,6 +281,13 @@
     <p class="lead">La venta se cierra por WhatsApp; acá te dejamos los datos para transferir.</p>
     <div class="grid3" id="pay-methods"></div>
   </section>
+
+  <!-- EXPLORÁ EL CATÁLOGO (aleatorios) -->
+  <section class="block" id="explorar">
+    <h2>Explorá el catálogo</h2>
+    <p class="lead">Otras opciones que quizás no viste todavía.</p>
+    <div id="random-scroll"></div>
+  </section>
 </main>
 
 <footer>
@@ -276,11 +304,18 @@
         <svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3 0 4.1.06 1.06.05 1.79.22 2.42.46.66.26 1.2.6 1.76 1.15s.9 1.1 1.15 1.76c.24.63.4 1.36.46 2.42C21.99 9 22 9.3 22 12s0 3-.06 4.1c-.05 1.06-.22 1.79-.46 2.42a4.9 4.9 0 0 1-1.15 1.76 4.9 4.9 0 0 1-1.76 1.15c-.63.24-1.36.4-2.42.46-1.1.05-1.4.06-4.1.06s-3 0-4.1-.06c-1.06-.05-1.79-.22-2.42-.46a4.9 4.9 0 0 1-1.76-1.15 4.9 4.9 0 0 1-1.15-1.76c-.24-.63-.4-1.36-.46-2.42C2.01 15 2 14.7 2 12s0-3 .06-4.1c.05-1.06.22-1.79.46-2.42A4.9 4.9 0 0 1 3.67 3.7a4.9 4.9 0 0 1 1.76-1.1c.63-.24 1.36-.4 2.42-.46C8.95 2.01 9.3 2 12 2Zm0 3.06a5.14 5.14 0 1 0 0 10.28 5.14 5.14 0 0 0 0-10.28Zm0 1.8a3.34 3.34 0 1 1 0 6.68 3.34 3.34 0 0 1 0-6.68Zm5.34-3.2a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4Z"/></svg><span id="ig-handle">@chester3d</span></a>
     </div>
     <div class="foot-col">
+      <h5>Información</h5>
+      <a href="envios.html">Envíos</a>
+      <a href="politica.html">Política de devolución</a>
+      <a href="preguntas.html">Preguntas frecuentes</a>
+      <a href="sobre-nosotros.html">Sobre nosotros</a>
+    </div>
+    <div class="foot-col">
       <h5>Aceptamos</h5>
       <div class="pay-icons"><span>Transferencia</span><span>MercadoPago</span><span>Efectivo</span></div>
     </div>
   </div>
-  <div class="copy mono">© <span id="year"></span> CHESTER3D · CH3D — Hecho en Buenos Aires</div>
+  <div class="copy mono">© CHESTER3D · CH3D — Hecho en Buenos Aires</div>
 </footer>
 
 <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="Detalle de producto">
@@ -396,6 +431,20 @@ function renderGrid(){
   document.getElementById("count").textContent=list.length;
 }
 
+function relatedHTML(current, mode){
+  // mode "cat": misma categoría, distinto slug. "random": aleatorios de todo el catálogo.
+  let pool = PRODUCTS.filter(p=>p.slug!==current.slug);
+  if(mode==="cat") pool = pool.filter(p=>p.cat===current.cat);
+  if(!pool.length) return "";
+  // barajar
+  pool = pool.slice().sort(()=>Math.random()-.5).slice(0,6);
+  const title = mode==="cat" ? "También te puede interesar" : "Explorá el catálogo";
+  const cards = pool.map(p=>{
+    const thumb = p.imgs&&p.imgs.length ? `<img src="${p.imgs[0]}" alt="${p.nombre}" loading="lazy">` : icon(p.cat);
+    return `<a class="rel-card" href="#${p.slug}"><div class="rt">${thumb}</div><div class="rb"><div class="rn">${p.nombre}</div><div class="rp">${p.precio}</div></div></a>`;
+  }).join("");
+  return `<div class="related"><h3>${title}</h3><div class="rel-scroll">${cards}</div></div>`;
+}
 function openSheet(i, fromHash){
   const p=PRODUCTS[i];
   sheet.innerHTML=`
@@ -419,6 +468,7 @@ function openSheet(i, fromHash){
           <div class="tab"><button onclick="tog(this)">Envíos <span>+</span></button><div class="panel">Envíos a todo el país por correo o cadetería. Retiro en persona a coordinar. (Detalle de ejemplo — ajustar.)</div></div>
           <div class="tab"><button onclick="tog(this)">Medios de pago <span>+</span></button><div class="panel">Transferí a Hernán Bohl:${copyField("Alias banco",CONFIG.pago.banco.alias)}${copyField("Alias MP",CONFIG.pago.mp.alias)}</div></div>
         </div>
+        ${relatedHTML(p,"cat")}
       </div>
     </div>`;
   overlay.classList.add("open");document.body.style.overflow="hidden";
@@ -446,19 +496,28 @@ document.getElementById("search").addEventListener("input",e=>{query=e.target.va
 document.querySelectorAll("#nav-wa,#foot-wa").forEach(a=>a.href=waLink("una consulta"));
 document.getElementById("foot-ig").href="https://instagram.com/"+CONFIG.instagram;
 document.getElementById("ig-handle").textContent="@"+CONFIG.instagram;
-document.getElementById("year").textContent=new Date().getFullYear();
 
 /* ---- campos copiables ---- */
 function copyField(label,val){
-  return `<button type="button" class="copy-field" data-copy="${val}"><span class="cf-l">${label}</span><span class="cf-v">${val}</span><span class="cf-hint">Copiar</span></button>`;
+  const dots="•".repeat(Math.min(val.length,20));
+  return `<div class="copy-field">
+    <span class="cf-l">${label}</span>
+    <span class="cf-v hidden" data-real="${val}" data-mask="${dots}">${dots}</span>
+    <button type="button" class="cf-btn cf-eye" title="Mostrar/ocultar" aria-label="Mostrar u ocultar" onclick="toggleEye(this)"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></button>
+    <button type="button" class="cf-btn cf-copy" data-copy="${val}" title="Copiar" onclick="doCopy(this)">Copiar</button>
+  </div>`;
+}
+function toggleEye(btn){
+  const v=btn.parentElement.querySelector(".cf-v");
+  if(v.classList.contains("hidden")){v.textContent=v.dataset.real;v.classList.remove("hidden");}
+  else{v.textContent=v.dataset.mask;v.classList.add("hidden");}
 }
 function legacyCopy(t){const ta=document.createElement("textarea");ta.value=t;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();try{document.execCommand("copy");}catch(e){}document.body.removeChild(ta);}
-function copyText(t){
-  if(navigator.clipboard&&window.isSecureContext){return navigator.clipboard.writeText(t).catch(()=>legacyCopy(t));}
-  legacyCopy(t);return Promise.resolve();
+function doCopy(btn){
+  const t=btn.getAttribute("data-copy");
+  const p=(navigator.clipboard&&window.isSecureContext)?navigator.clipboard.writeText(t).catch(()=>legacyCopy(t)):Promise.resolve(legacyCopy(t));
+  p.then(()=>{const field=btn.parentElement;field.classList.add("copied");btn.textContent="¡Copiado!";setTimeout(()=>{field.classList.remove("copied");btn.textContent="Copiar";},1300);});
 }
-function flash(btn){const h=btn.querySelector(".cf-hint");btn.classList.add("copied");h.textContent="¡Copiado!";setTimeout(()=>{btn.classList.remove("copied");h.textContent="Copiar";},1300);}
-document.addEventListener("click",e=>{const btn=e.target.closest(".copy-field");if(!btn)return;copyText(btn.getAttribute("data-copy")).then(()=>flash(btn));});
 
 /* ---- sección medios de pago ---- */
 function renderPago(){
@@ -484,10 +543,24 @@ function renderPago(){
       <div class="t mono">EFECTIVO</div>
       <h4>Retiro en persona</h4>
       <p>Coordinamos punto de encuentro por WhatsApp. Efectivo o transferencia en el momento.</p>
+      <div class="loc-line">📍 Localidad: Colegiales — Buenos Aires, Capital</div>
     </div>`;
 }
 
-renderCats();renderGrid();renderPago();route();
+/* ---- sección aleatoria en home ---- */
+function renderRandom(){
+  const el=document.getElementById("random-scroll");
+  if(!el||!PRODUCTS.length)return;
+  const pool=PRODUCTS.slice().sort(()=>Math.random()-.5).slice(0,8);
+  const cards=pool.map(p=>{
+    const thumb=p.imgs&&p.imgs.length?`<img src="${p.imgs[0]}" alt="${p.nombre}" loading="lazy">`:icon(p.cat);
+    return `<a class="rel-card" href="#${p.slug}"><div class="rt">${thumb}</div><div class="rb"><div class="rn">${p.nombre}</div><div class="rp">${p.precio}</div></div></a>`;
+  }).join("");
+  el.className="rel-scroll";
+  el.innerHTML=cards;
+}
+
+renderCats();renderGrid();renderPago();renderRandom();route();
 </script>
 </body>
 </html>
