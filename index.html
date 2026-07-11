@@ -201,6 +201,80 @@
   .pay-tab-block .pt-t{font-size:10.5px;letter-spacing:.08em;color:var(--brick);font-weight:600;margin-bottom:6px}
   .pay-tab-block .pt-titu{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-faint);margin-top:8px}
   .pay-tab-block .copy-field{margin-top:6px}
+
+  /* CITA / FIRMA */
+  .quote-block{margin-top:52px;padding:42px 26px;text-align:center;background:var(--paper-2);border:1px solid var(--edge);border-radius:var(--radius);position:relative}
+  .quote-mark{font-family:"Fraunces",serif;font-size:80px;line-height:.4;color:var(--brick);opacity:.35;margin-top:22px;margin-bottom:6px}
+  .quote-block blockquote{font-family:"Fraunces",serif;font-weight:500;font-style:italic;font-size:clamp(22px,4vw,32px);line-height:1.15;color:var(--ink);max-width:22ch;margin:0 auto;text-transform:uppercase;letter-spacing:.01em}
+  .quote-block blockquote em{font-style:italic;color:var(--brick);font-weight:600}
+  .quote-sig{margin-top:18px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.2em;color:var(--ink-faint)}
+
+  /* =========== CARRITO =========== */
+  /* Botón flotante */
+  .cart-fab{position:fixed;bottom:22px;right:22px;z-index:60;width:56px;height:56px;border-radius:50%;background:var(--brick);color:#fff;border:none;cursor:pointer;box-shadow:0 8px 24px rgba(194,58,44,.35);display:flex;align-items:center;justify-content:center;transition:transform .18s ease,box-shadow .18s ease}
+  .cart-fab:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(194,58,44,.45);background:var(--brick-dk)}
+  .cart-fab:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+  .cart-fab svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .cart-count{position:absolute;top:-4px;right:-4px;min-width:22px;height:22px;padding:0 6px;background:var(--ink);color:#fff;border:2px solid var(--paper);border-radius:11px;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;line-height:1}
+  .cart-count.hidden{display:none}
+
+  /* Overlay + panel lateral */
+  .cart-backdrop{position:fixed;inset:0;z-index:70;background:rgba(20,28,40,.45);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .22s ease}
+  .cart-backdrop.open{opacity:1;pointer-events:auto}
+  .cart-panel{position:fixed;top:0;right:0;bottom:0;z-index:75;width:min(420px,100%);background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-left:1px solid var(--edge);box-shadow:-24px 0 60px rgba(15,22,35,.15);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .28s cubic-bezier(.32,.72,0,1)}
+  .cart-panel.open{transform:translateX(0)}
+
+  .cart-head{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid var(--edge)}
+  .cart-head h3{font-family:"Fraunces",serif;font-weight:600;font-size:20px;text-transform:uppercase;letter-spacing:.02em}
+  .cart-head .clear{background:none;border:none;cursor:pointer;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);padding:6px 8px;border-radius:6px}
+  .cart-head .clear:hover{color:var(--brick);background:var(--paper-3)}
+  .cart-close{background:none;border:1px solid var(--edge);border-radius:8px;width:34px;height:34px;font-size:18px;cursor:pointer;color:var(--ink-soft);line-height:1;flex:none;margin-left:8px}
+  .cart-close:hover{background:var(--paper-3);color:var(--ink)}
+
+  .cart-items{flex:1;overflow-y:auto;padding:14px 22px;display:flex;flex-direction:column;gap:12px}
+  .cart-empty{margin:auto;text-align:center;padding:30px 20px;color:var(--ink-faint)}
+  .cart-empty svg{width:56px;height:56px;fill:none;stroke:currentColor;stroke-width:1.5;opacity:.5;margin-bottom:14px}
+  .cart-empty p{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.05em}
+
+  .cart-item{display:flex;gap:12px;background:#fff;border:1px solid var(--edge);border-radius:10px;padding:10px}
+  .cart-item .ci-thumb{width:64px;height:64px;flex:none;border-radius:7px;overflow:hidden;background:var(--paper-3);display:flex;align-items:center;justify-content:center}
+  .cart-item .ci-thumb img{width:100%;height:100%;object-fit:cover}
+  .cart-item .ci-thumb svg{width:60%;height:60%}
+  .cart-item .ci-body{flex:1;display:flex;flex-direction:column;justify-content:space-between;min-width:0}
+  .cart-item .ci-name{font-family:"Fraunces",serif;font-weight:600;font-size:13.5px;line-height:1.2;text-transform:uppercase;letter-spacing:.01em;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .cart-item .ci-price{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--ink-soft);margin-top:2px}
+  .cart-item .ci-price.tocotizar{color:var(--brick);font-weight:600}
+  .cart-item .ci-controls{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:6px}
+  .qty{display:inline-flex;align-items:center;border:1px solid var(--edge);border-radius:7px;overflow:hidden;background:#fff}
+  .qty button{background:none;border:none;cursor:pointer;width:26px;height:26px;font-size:14px;font-weight:600;color:var(--ink-soft);line-height:1}
+  .qty button:hover{background:var(--paper-3);color:var(--ink)}
+  .qty .qv{padding:0 6px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:600;min-width:22px;text-align:center}
+  .ci-remove{background:none;border:none;cursor:pointer;color:var(--ink-faint);padding:4px 6px;border-radius:5px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase}
+  .ci-remove:hover{color:var(--brick);background:var(--paper-3)}
+
+  .cart-foot{border-top:1px solid var(--edge);padding:18px 22px 22px;background:rgba(255,255,255,.7)}
+  .cart-totals{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+  .cart-totals .row{display:flex;justify-content:space-between;font-family:"IBM Plex Mono",monospace;font-size:13px}
+  .cart-totals .row.total{font-size:16px;font-weight:600;padding-top:8px;border-top:1px dashed var(--edge)}
+  .cart-totals .row .l{color:var(--ink-soft)}
+  .cart-totals .row.total .l{color:var(--ink)}
+  .cart-totals .row .v{color:var(--ink)}
+  .cart-totals .row.acot{color:var(--brick)}
+  .cart-checkout{width:100%;display:flex;align-items:center;justify-content:center;gap:9px;background:var(--brick);color:#fff;border:none;font-family:"IBM Plex Sans",sans-serif;font-weight:600;font-size:15px;padding:14px;border-radius:11px;cursor:pointer;transition:.14s}
+  .cart-checkout:hover{background:var(--brick-dk)}
+  .cart-checkout:disabled{background:var(--ink-faint);cursor:not-allowed}
+  .cart-checkout svg{width:18px;height:18px;fill:currentColor}
+  .cart-hint{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-faint);text-align:center;margin-top:10px;line-height:1.4}
+
+  /* Botón "Agregar al carrito" en la ficha (junto al de WhatsApp) */
+  .add-to-cart{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--paper-2);color:var(--ink);text-decoration:none;font-weight:600;font-size:14px;padding:13px;border:1px solid var(--edge);border-radius:11px;cursor:pointer;margin-top:10px;transition:.14s;font-family:"IBM Plex Sans",sans-serif}
+  .add-to-cart:hover{border-color:var(--ink);background:var(--paper-3)}
+  .add-to-cart.added{background:var(--pine);color:#fff;border-color:var(--pine)}
+  .add-to-cart svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+  @media(max-width:600px){
+    .cart-fab{width:52px;height:52px;bottom:16px;right:16px}
+  }
   .buy{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;background:var(--brick);color:#fff;text-decoration:none;font-weight:600;font-size:15px;padding:14px;border-radius:11px}
   .buy:hover{background:var(--brick-dk)}
   .buy svg{width:18px;height:18px;fill:currentColor}
@@ -232,15 +306,7 @@
 
 <div id="top"></div>
 
-<section class="hero">
-  <div class="wrap">
-    <div class="eyebrow">Chester3D · Buenos Aires, Argentina</div>
-    <h1>Impreso por la máquina,<br><em>terminado a mano.</em></h1>
-    <p>Productos listos, accesorios que personalizamos con tu logo y trabajos a medida.</p>
-  </div>
-</section>
-
-<main class="wrap">
+<main class="wrap" style="padding-top:34px">
   <div id="catalogo"></div>
   <div class="shop">
     <!-- SIDEBAR -->
@@ -295,11 +361,11 @@
     </div>
   </section>
 
-  <!-- MEDIOS DE PAGO -->
-  <section class="block" id="pago">
-    <h2>Medios de pago</h2>
-    <p class="lead">La venta se cierra por WhatsApp; acá te dejamos los datos para transferir.</p>
-    <div class="grid3" id="pay-methods"></div>
+  <!-- CITA / FIRMA DEL TALLER -->
+  <section class="quote-block">
+    <div class="quote-mark">“</div>
+    <blockquote>Impreso por la máquina,<br><em>terminado a mano.</em></blockquote>
+    <div class="quote-sig">CH3D · CHESTER3D</div>
   </section>
 
   <!-- EXPLORÁ EL CATÁLOGO (aleatorios) -->
@@ -337,6 +403,24 @@
   </div>
   <div class="copy mono">© CHESTER3D · CH3D — Hecho en Buenos Aires</div>
 </footer>
+
+<!-- CARRITO -->
+<button class="cart-fab" id="cart-fab" aria-label="Ver carrito de compras" onclick="openCart()">
+  <svg viewBox="0 0 24 24"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6L5 3H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+  <span class="cart-count hidden" id="cart-count">0</span>
+</button>
+
+<div class="cart-backdrop" id="cart-backdrop" onclick="closeCart()"></div>
+
+<aside class="cart-panel" id="cart-panel" role="dialog" aria-modal="true" aria-label="Carrito de compras">
+  <div class="cart-head">
+    <h3>Tu carrito</h3>
+    <button class="clear" id="cart-clear" onclick="clearCart()">Vaciar</button>
+    <button class="cart-close" aria-label="Cerrar carrito" onclick="closeCart()">×</button>
+  </div>
+  <div class="cart-items" id="cart-items"></div>
+  <div class="cart-foot" id="cart-foot"></div>
+</aside>
 
 <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="Detalle de producto">
   <div class="sheet" id="sheet"></div>
@@ -544,6 +628,10 @@ function openSheet(i, fromHash){
         <a class="buy" href="${waLink(p.nombre)}" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2m0 1.8a8.2 8.2 0 0 1 5.8 14 8.2 8.2 0 0 1-9.9 1.3l-.35-.2-2.9.77.77-2.83-.23-.36A8.2 8.2 0 0 1 12 3.8m-2.4 3.7c-.18 0-.47.07-.72.34s-.95.93-.95 2.27.98 2.63 1.11 2.81 1.9 3 4.7 4.08c2.34.9 2.82.72 3.33.68s1.63-.66 1.86-1.3.23-1.2.16-1.31-.25-.18-.52-.31-1.63-.8-1.88-.9-.44-.13-.62.14-.71.9-.87 1.08-.32.2-.6.07a6.7 6.7 0 0 1-2-1.23 7.4 7.4 0 0 1-1.37-1.7c-.14-.25 0-.38.11-.5s.25-.3.38-.44.17-.25.25-.42.04-.32-.02-.45-.61-1.48-.84-2.02-.44-.46-.6-.47Z"/></svg>
           Pedir por WhatsApp</a>
+        <button type="button" class="add-to-cart" onclick="addToCartFromSheet(${i}, this)">
+          <svg viewBox="0 0 24 24"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6L5 3H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M12 9v6M9 12h6"/></svg>
+          Agregar al carrito
+        </button>
         <div class="tabs">
           <div class="tab open"><button onclick="tog(this)">Descripción <span>–</span></button><div class="panel">${p.detalle}</div></div>
           <div class="tab"><button onclick="tog(this)">Materiales y medidas <span>+</span></button><div class="panel">${p.spec}</div></div>
@@ -642,7 +730,177 @@ function renderRandom(){
   el.innerHTML=cards;
 }
 
-renderCats();renderGrid();renderPago();renderRandom();route();
+/* ============= CARRITO ============= */
+const CART_KEY = "ch3d-cart-v1";
+
+function priceToNumber(p){
+  // "$6.500" -> 6500 ; "Desde $12.000" -> null (no calcula) ; "Presupuesto a medida" -> null
+  const m = (p||"").match(/\$\s*([\d.,]+)/);
+  if(!m) return null;
+  if(/^Desde/i.test(p)) return null; // no incluir "desde" en subtotal
+  return parseInt(m[1].replace(/[.,]/g,""),10) || null;
+}
+function formatARS(n){ return "$"+n.toLocaleString("es-AR"); }
+
+function cartLoad(){
+  try{ return JSON.parse(localStorage.getItem(CART_KEY)) || []; }
+  catch(e){ return []; }
+}
+function cartSave(items){
+  try{ localStorage.setItem(CART_KEY, JSON.stringify(items)); }catch(e){}
+  cartRender();
+}
+let CART = cartLoad();
+
+function addToCart(prodIdx, qty){
+  const p = PRODUCTS[prodIdx];
+  if(!p) return;
+  qty = qty || 1;
+  const existing = CART.find(it=>it.slug===p.slug);
+  if(existing){ existing.cantidad += qty; }
+  else{
+    CART.push({
+      slug: p.slug,
+      nombre: p.nombre,
+      precioTxt: p.precio,
+      precioNum: priceToNumber(p.precio),
+      cotizar: priceToNumber(p.precio)===null, // true si es "consultar" o "desde"
+      cantidad: qty,
+      thumb: p.imgs && p.imgs.length ? p.imgs[0] : null,
+      cat: p.cat
+    });
+  }
+  cartSave(CART);
+}
+
+function addToCartFromSheet(idx, btn){
+  addToCart(idx, 1);
+  btn.classList.add("added");
+  btn.querySelector("svg + *")? null : null;
+  const original = btn.innerHTML;
+  btn.innerHTML = `<svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Agregado ✓`;
+  setTimeout(()=>{ btn.classList.remove("added"); btn.innerHTML = original; },1400);
+}
+
+function changeQty(slug, delta){
+  const it = CART.find(x=>x.slug===slug);
+  if(!it) return;
+  it.cantidad += delta;
+  if(it.cantidad<=0){ CART = CART.filter(x=>x.slug!==slug); }
+  cartSave(CART);
+}
+function removeFromCart(slug){
+  CART = CART.filter(x=>x.slug!==slug);
+  cartSave(CART);
+}
+function clearCart(){
+  if(!CART.length) return;
+  if(!confirm("¿Vaciar el carrito?")) return;
+  CART = [];
+  cartSave(CART);
+}
+
+function openCart(){
+  document.getElementById("cart-panel").classList.add("open");
+  document.getElementById("cart-backdrop").classList.add("open");
+  document.body.style.overflow="hidden";
+}
+function closeCart(){
+  document.getElementById("cart-panel").classList.remove("open");
+  document.getElementById("cart-backdrop").classList.remove("open");
+  document.body.style.overflow="";
+}
+
+function cartRender(){
+  // contador
+  const totalItems = CART.reduce((s,it)=>s+it.cantidad,0);
+  const badge = document.getElementById("cart-count");
+  badge.textContent = totalItems;
+  badge.classList.toggle("hidden", totalItems===0);
+
+  // lista
+  const cont = document.getElementById("cart-items");
+  if(!CART.length){
+    cont.innerHTML = `<div class="cart-empty">
+      <svg viewBox="0 0 24 24"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6L5 3H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+      <p>Tu carrito está vacío.<br>Agregá productos desde el catálogo.</p>
+    </div>`;
+  } else {
+    cont.innerHTML = CART.map(it=>{
+      const thumb = it.thumb ? `<img src="${it.thumb}" alt="">` : icon(it.cat);
+      const precio = it.cotizar ? `<div class="ci-price tocotizar">A cotizar</div>` :
+                                   `<div class="ci-price">${formatARS(it.precioNum)} c/u</div>`;
+      return `<div class="cart-item">
+        <div class="ci-thumb">${thumb}</div>
+        <div class="ci-body">
+          <div>
+            <div class="ci-name">${it.nombre}</div>
+            ${precio}
+          </div>
+          <div class="ci-controls">
+            <div class="qty">
+              <button onclick="changeQty('${it.slug}',-1)" aria-label="Restar">−</button>
+              <span class="qv">${it.cantidad}</span>
+              <button onclick="changeQty('${it.slug}',1)" aria-label="Sumar">+</button>
+            </div>
+            <button class="ci-remove" onclick="removeFromCart('${it.slug}')">Quitar</button>
+          </div>
+        </div>
+      </div>`;
+    }).join("");
+  }
+
+  // totales + botón
+  const foot = document.getElementById("cart-foot");
+  if(!CART.length){
+    foot.innerHTML = "";
+    document.getElementById("cart-clear").style.visibility = "hidden";
+    return;
+  }
+  document.getElementById("cart-clear").style.visibility = "visible";
+
+  const subtotal = CART.filter(it=>!it.cotizar).reduce((s,it)=>s+it.precioNum*it.cantidad, 0);
+  const acotizar = CART.filter(it=>it.cotizar).length;
+  const rows = [
+    `<div class="row"><span class="l">Subtotal</span><span class="v">${formatARS(subtotal)}</span></div>`,
+  ];
+  if(acotizar){
+    rows.push(`<div class="row acot"><span class="l">Productos a cotizar</span><span class="v">${acotizar}</span></div>`);
+  }
+  rows.push(`<div class="row total"><span class="l">Total</span><span class="v">${formatARS(subtotal)}${acotizar?" + a cotizar":""}</span></div>`);
+
+  foot.innerHTML = `
+    <div class="cart-totals">${rows.join("")}</div>
+    <button class="cart-checkout" onclick="checkoutWhatsApp()">
+      <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2m0 1.8a8.2 8.2 0 0 1 5.8 14 8.2 8.2 0 0 1-9.9 1.3l-.35-.2-2.9.77.77-2.83-.23-.36A8.2 8.2 0 0 1 12 3.8m-2.4 3.7c-.18 0-.47.07-.72.34s-.95.93-.95 2.27.98 2.63 1.11 2.81 1.9 3 4.7 4.08c2.34.9 2.82.72 3.33.68s1.63-.66 1.86-1.3.23-1.2.16-1.31-.25-.18-.52-.31-1.63-.8-1.88-.9-.44-.13-.62.14-.71.9-.87 1.08-.32.2-.6.07a6.7 6.7 0 0 1-2-1.23 7.4 7.4 0 0 1-1.37-1.7c-.14-.25 0-.38.11-.5s.25-.3.38-.44.17-.25.25-.42.04-.32-.02-.45-.61-1.48-.84-2.02-.44-.46-.6-.47Z"/></svg>
+      Finalizar por WhatsApp
+    </button>
+    <div class="cart-hint">Los colores y datos de pago se coordinan en el chat.</div>
+  `;
+}
+
+function checkoutWhatsApp(){
+  if(!CART.length) return;
+  const lines = ["¡Hola CH3D! Quiero realizar el siguiente pedido:", ""];
+  CART.forEach(it=>{
+    const precio = it.cotizar ? "a cotizar" : formatARS(it.precioNum);
+    lines.push(`• ${it.cantidad}x ${it.nombre} (${precio})`);
+  });
+  const subtotal = CART.filter(it=>!it.cotizar).reduce((s,it)=>s+it.precioNum*it.cantidad, 0);
+  const acotizar = CART.filter(it=>it.cotizar).length;
+  lines.push("");
+  if(subtotal>0) lines.push(`Total: ${formatARS(subtotal)}${acotizar?" (+ productos a cotizar)":""}`);
+  else if(acotizar) lines.push("Total: a cotizar");
+  lines.push("");
+  lines.push("Coordino colores y me pasás los datos de pago cuando confirmes. ¡Gracias!");
+  const msg = encodeURIComponent(lines.join("\n"));
+  window.open(`https://wa.me/${CONFIG.whatsapp}?text=${msg}`, "_blank", "noopener");
+}
+
+// Escape cierra carrito también
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeCart();}});
+
+renderCats();renderGrid();renderRandom();cartRender();route();
 </script>
 </body>
 </html>
